@@ -12,11 +12,15 @@ type WebsocketProviderConstructorArgs = ConstructorParameters<
 	typeof WebsocketProvider
 >;
 
-interface WebsocketConnectionConfig {
+export interface WebsocketConnectionConfig {
 	options?: WebsocketProviderConstructorArgs[ 3 ];
 	password?: string; // TODO: Use this to authorize the connection
 	serverUrl: string;
 }
+
+export type CreateWebSocketConnection = (
+	config: WebsocketConnectionConfig
+) => ConnectDoc;
 
 /**
  * Function that creates a new WebSocket Connection.
@@ -24,9 +28,9 @@ interface WebsocketConnectionConfig {
  * @param {WebsocketConnectionConfig} config The configuration for the WebSocket connection.
  * @return {ConnectDoc} A function that connects a Y.Doc to a WebSocket server.
  */
-export function createWebSocketConnection(
-	config: WebsocketConnectionConfig
-): ConnectDoc {
+export const createWebSocketConnection: CreateWebSocketConnection = (
+	config
+) => {
 	return async function ( objectId: string, objectType: string, doc: Y.Doc ) {
 		const roomName = `${ objectType }-${ objectId }`;
 
@@ -44,4 +48,4 @@ export function createWebSocketConnection(
 			// implement a way to disconnect or clean up resources here.
 		};
 	};
-}
+};

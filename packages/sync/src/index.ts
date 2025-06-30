@@ -20,6 +20,7 @@ import { createSyncProvider } from './provider';
 import { createWebRTCConnection } from './create-webrtc-connection';
 import { createWebSocketConnection } from './create-websocket-connection';
 import type { ConnectDoc, SyncProvider } from './types';
+import { addAwareness } from './awareness';
 
 /**
  * Export dependencies
@@ -93,5 +94,7 @@ export function getSyncProvider() {
 
 	return syncProvider;
 }
+
+addAwareness();
 
 export const currentEncodingVersion = '1';

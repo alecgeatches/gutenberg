@@ -33,6 +33,8 @@
 		"@types/simple-peer": "^9.11.5",
 		"@wordpress/hooks": "file:../hooks",
 		"@wordpress/url": "file:../url",
+		"@wordpress/data": "file:../data",
+		"@wordpress/core-data": "file:../core-data",
 		"import-locals": "^2.0.0",
 		"lib0": "^0.2.42",
 		"simple-peer": "^9.11.0",
